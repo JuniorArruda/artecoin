@@ -1,85 +1,39 @@
-Litecoin Core integration/staging tree
-=====================================
+O que é Artecoin?
+Artecoin é uma moeda digital experimental que permite pagamentos instantâneos para qualquer pessoa, em qualquer lugar do mundo. Artecoin utiliza tecnologia peer-to-peer para operar sem uma autoridade central: o gerenciamento de transações e a emissão de dinheiro são realizados coletivamente pela rede. Artecoin Core é o nome do software de código aberto que permite o uso dessa moeda.
 
-[![Build Status](https://travis-ci.org/litecoin-project/litecoin.svg?branch=master)](https://travis-ci.org/litecoin-project/litecoin)
+Para mais informações, assim como uma versão binária imediatamente utilizável do software Artecoin Core, veja https://artecoin.org.
 
-https://litecoin.org
+Licença
+Artecoin Core é lançado sob os termos da licença MIT. Veja COPYING para mais informações ou acesse https://opensource.org/licenses/MIT.
 
-What is Litecoin?
-----------------
+Processo de Desenvolvimento
+A branch master é regularmente construída (veja doc/build-*.md para instruções) e testada, mas não é garantido que seja completamente estável. Tags são criadas regularmente a partir de branches de lançamento para indicar novas versões oficiais e estáveis do Artecoin Core.
 
-Litecoin is an experimental digital currency that enables instant payments to
-anyone, anywhere in the world. Litecoin uses peer-to-peer technology to operate
-with no central authority: managing transactions and issuing money are carried
-out collectively by the network. Litecoin Core is the name of open source
-software which enables the use of this currency.
+O repositório https://github.com/seu-usuario/gui é usado exclusivamente para o desenvolvimento da GUI. Sua branch master é idêntica em todos os repositórios monotree. Branches de lançamento e tags não existem, então, por favor, não faça fork desse repositório, a menos que seja por razões de desenvolvimento.
 
-For more information, as well as an immediately useable, binary version of
-the Litecoin Core software, see [https://litecoin.org](https://litecoin.org).
+O fluxo de trabalho de contribuição é descrito em CONTRIBUTING.md e dicas úteis para desenvolvedores podem ser encontradas em doc/developer-notes.md.
 
-License
--------
+A lista de discussão para desenvolvedores deve ser usada para discutir mudanças complicadas ou controversas antes de trabalhar em um conjunto de patches.
 
-Litecoin Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
-information or see https://opensource.org/licenses/MIT.
+O IRC para desenvolvedores pode ser encontrado no Freenode em #artecoin-dev.
 
-Development Process
--------------------
+Testes
+Testes e revisão de código são o gargalo para o desenvolvimento; recebemos mais pull requests do que podemos revisar e testar em curto prazo. Por favor, seja paciente e ajude testando pull requests de outras pessoas, e lembre-se de que este é um projeto crítico para a segurança onde qualquer erro pode custar muito dinheiro para as pessoas.
 
-The `master` branch is regularly built (see `doc/build-*.md` for instructions) and tested, but it is not guaranteed to be
-completely stable. [Tags](https://github.com/litecoin-project/litecoin/tags) are created
-regularly from release branches to indicate new official, stable release versions of Litecoin Core.
+Testes Automatizados
+Os desenvolvedores são fortemente encorajados a escrever testes unitários para o novo código e a submeter novos testes unitários para o código antigo. Testes unitários podem ser compilados e executados (assumindo que não foram desativados na configuração) com: make check. Mais detalhes sobre como executar e estender testes unitários podem ser encontrados em /src/test/README.md.
 
-The https://github.com/litecoin-project/gui repository is used exclusively for the
-development of the GUI. Its master branch is identical in all monotree
-repositories. Release branches and tags do not exist, so please do not fork
-that repository unless it is for development reasons.
+Existem também testes de regressão e integração, escritos em Python, que são executados automaticamente no servidor de build. Esses testes podem ser executados (se as dependências de teste estiverem instaladas) com: test/functional/test_runner.py
 
-The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md)
-and useful hints for developers can be found in [doc/developer-notes.md](doc/developer-notes.md).
+O sistema Travis CI garante que cada pull request seja construído para Windows, Linux e macOS, e que testes unitários/sanitários sejam executados automaticamente.
 
-The developer [mailing list](https://groups.google.com/forum/#!forum/litecoin-dev)
-should be used to discuss complicated or controversial changes before working
-on a patch set.
+Testes de Garantia de Qualidade (QA) Manuais
+As mudanças devem ser testadas por alguém que não seja o desenvolvedor que escreveu o código. Isso é especialmente importante para mudanças grandes ou de alto risco. É útil adicionar um plano de teste à descrição do pull request se testar as mudanças não for algo direto.
 
-Developer IRC can be found on Freenode at #litecoin-dev.
+Traduções
+Nós aceitamos apenas correções de tradução que sejam submetidas através da página do Transifex do Bitcoin Core. As traduções são convertidas periodicamente para o Artecoin.
 
-Testing
--------
+As traduções são periodicamente puxadas do Transifex e mescladas no repositório git. Veja o processo de tradução para detalhes sobre como isso funciona.
 
-Testing and code review is the bottleneck for development; we get more pull
-requests than we can review and test on short notice. Please be patient and help out by testing
-other people's pull requests, and remember this is a security-critical project where any mistake might cost people
-lots of money.
+Importante: Não aceitamos mudanças de tradução como pull requests no GitHub porque a próxima extração do Transifex as sobrescreveria automaticamente.
 
-### Automated Testing
-
-Developers are strongly encouraged to write [unit tests](src/test/README.md) for new code, and to
-submit new unit tests for old code. Unit tests can be compiled and run
-(assuming they weren't disabled in configure) with: `make check`. Further details on running
-and extending unit tests can be found in [/src/test/README.md](/src/test/README.md).
-
-There are also [regression and integration tests](/test), written
-in Python, that are run automatically on the build server.
-These tests can be run (if the [test dependencies](/test) are installed) with: `test/functional/test_runner.py`
-
-The Travis CI system makes sure that every pull request is built for Windows, Linux, and macOS, and that unit/sanity tests are run automatically.
-
-### Manual Quality Assurance (QA) Testing
-
-Changes should be tested by somebody other than the developer who wrote the
-code. This is especially important for large or high-risk changes. It is useful
-to add a test plan to the pull request description if testing the changes is
-not straightforward.
-
-Translations
-------------
-
-We only accept translation fixes that are submitted through [Bitcoin Core's Transifex page](https://www.transifex.com/projects/p/bitcoin/).
-Translations are converted to Litecoin periodically.
-
-Translations are periodically pulled from Transifex and merged into the git repository. See the
-[translation process](doc/translation_process.md) for details on how this works.
-
-**Important**: We do not accept translation changes as GitHub pull requests because the next
-pull from Transifex would automatically overwrite them again.
